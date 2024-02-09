@@ -5,7 +5,8 @@
   "main": "./src/api/api.js",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "vercel-build": "echo running"
   },
   "author": "Abizar Reyfan",
   "license": "MIT",
@@ -30,7 +31,7 @@
     "prettier": "^3.2.5"
   },
   "engines": {
-    "node": ">= 10.16.x",
-    "npm": ">= 6.9.x"
+    "node": ">= 18.x",
+    "npm": ">= 10.4.x"
   }
 }

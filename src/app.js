@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
   res.json({
-    message: 'Hak Cipta © 2022 Abizar Reyfan'
+    message: 'Hak Cipta © 2022 Abizar Reyfan, Beralih ke /api/v1 untuk Entry Points'
   });
 });
 

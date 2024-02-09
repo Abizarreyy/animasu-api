@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   res.json({
-    message: 'Animasu API Entries',
+    message: 'API Entries',
     entries: [
       {
         "Search": "/api/v1/search/:keyword/:page",
