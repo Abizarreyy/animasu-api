@@ -93,5 +93,15 @@ router.get('/movies/:page', (req, res) => {
   })
 });
 
+router.get('/anime-list/:query/:page', (req, res) => {
+  const page = req.params.page;
+  const query = req.params.query;
+  api.animeList(query, page).then(anime => {
+    res.status(200).json(anime);
+  }).catch(error => {
+    res.status(500).send(error.message);
+  })
+});
+
 
 module.exports = router;

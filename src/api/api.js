@@ -145,6 +145,7 @@ const animeEpisode = async (slug) => {
       const title = el.find('div.meta div.lm h1').text().trim();
       const name = el.find('div.meta div.lm span.epx a:first-child').text().trim();
       const anime_slug = el.find('div.meta div.lm span.epx a:first-child').attr('href').split('/')[4];
+      const status = el.find('div.releases h3 font').text().trim();
       const episodes = [];
       
       el.find('div.bixbox ul#daftarepisode li').each((index, element) => {
@@ -157,6 +158,7 @@ const animeEpisode = async (slug) => {
       promises.push({
         title: title || null,
         name: name || null,
+        status: status || null,
         anime_slug: anime_slug || null,
         img: img || null,
         stream_url: stream_url || null,
@@ -458,6 +460,54 @@ const movies = async (page) => {
   }
 };
 
+const animeList = async (query, page) => {
+  try {
+    const res = await fetch(`${url.BASE_URL}/pencarian/?halaman=${page}&${query}`);
+    const body = await res.text();
+    const $ = cheerio.load(body);
+    const promises = {
+      anime: [],
+      pagination: {},
+    };
+    
+    $('div.listupd div.bs').each((index, element) => {
+      const el = $(element);
+      const name = el.find('div.bsx div.tt').text().trim();
+      const slug = el.find('div.bsx a').attr('href').split('/')[4];
+      const type = el.find('div.bsx a div.limit div.typez').text().trim();
+      const episode = el.find('div.bsx a div.limit div.bt span.epx').text().trim();
+      const img = el.find('div.bsx a div.limit img.lazy').attr('data-src');
+      const status = el.find('div.bsx a div.limit div.bt span.sb').text();
+    
+      promises.anime.push(getGenres(slug).then(extra => ({
+        slug: slug || null,
+        name: name || null,
+        type: type || null,
+        episode: episode || null,
+        img: img || null,
+        status: status|| null,
+        genres: extra || null,
+      })))
+  })
+  
+    await Promise.all(promises.anime).then(anime => {
+      promises.anime = anime;
+    })
+    
+    // pagination handler
+    const prev = $('div.hpage a.l').text().trim();
+    const next = $('div.hpage a.r').text().trim();
+
+    promises.pagination.prev = prev || null;
+    promises.pagination.next = next || null;
+    // =====
+
+    return promises;
+  } catch (error) {
+    throw new Error('Internal Server Error');
+  }
+}
+
 module.exports = {
   ongoingSeries,
   animeDetails,
@@ -469,4 +519,5 @@ module.exports = {
   characterTypes,
   characterType,
   movies,
+  animeList,
 }
