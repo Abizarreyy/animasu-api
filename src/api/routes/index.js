@@ -39,36 +39,11 @@ router.get('/episode/:slug', (req, res) => {
   })
 });
 
-router.get('/video-sources/:slug', (req, res) => {
-  const slug = req.params.slug;
-  api.animeVideoSources(slug).then(sources => {
-    res.status(200).json(sources);
-  }).catch(error => {
-    res.status(500).send(error.message);
-  })
-});
-
-router.get('/genres', (req, res) => {
-  api.genres().then(genres => {
-    res.status(200).json(genres);
-  }).catch(error => {
-    res.status(500).send(error.message);
-  })
-});
-
 router.get('/genre/:slug/:page', (req, res) => {
   const slug = req.params.slug;
   const page = req.params.page;
   api.genre(slug, page).then(anime => {
     res.status(200).json(anime);
-  }).catch(error => {
-    res.status(500).send(error.message);
-  })
-});
-
-router.get('/character-types', (req, res) => {
-  api.characterTypes().then(types => {
-    res.status(200).json(types);
   }).catch(error => {
     res.status(500).send(error.message);
   })
@@ -93,10 +68,10 @@ router.get('/movies/:page', (req, res) => {
   })
 });
 
-router.get('/anime-list/:query/:page', (req, res) => {
+router.get('/filter-list/:query/:page', (req, res) => {
   const page = req.params.page;
   const query = req.params.query;
-  api.animeList(query, page).then(anime => {
+  api.filterList(query, page).then(anime => {
     res.status(200).json(anime);
   }).catch(error => {
     res.status(500).send(error.message);
