@@ -32,7 +32,7 @@ const getPaginationCount = (body) => {
     paginationCount = Number(pagination.last().text().trim());
   }
 
-  return paginationCount || 0;
+  return paginationCount || 1;
 }
 
 const getPaginationButton = (body) => {

@@ -11,11 +11,9 @@ router.get('/', (req, res) => {
         "Ongoing Series": "/api/v1/ongoing-series/:page",
         "Anime Details": "/api/v1/anime/:slug",
         "Anime Episode": "/api/v1/episode/:slug",
-        "Genre List": "/api/v1/genres",
         "Genre": "/api/v1/genre/:slug/:page",
-        "Character Type List": "/api/v1/character-types",
         "Character Type": "/api/v1/character-type/:slug/:page",
-        "Filter List": "/filter-list/:query/:page",
+        "Filter List": "/api/v1/filter-list/:query/:page",
         "Movies": "/api/v1/movies/:page",
       }
     ]

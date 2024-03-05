@@ -1,7 +1,7 @@
 {
   "name": "animasu-api",
   "version": "1.0.0",
-  "description": "Animasu scraper",
+  "description": "Animasu API adalah Unofficial API yang menyediakan data series Anime dan Movie dari situs Web animasu.cc beserta Link Streaming dengan Subtitle Indonesia.",
   "main": "./src/api/api.js",
   "scripts": {
     "dev": "nodemon src/index.js",
@@ -19,7 +19,6 @@
     "express": "^4.18.2",
     "helmet": "^7.1.0",
     "morgan": "^1.10.0",
-    "node-fetch": "^3.3.2",
     "nodemon": "^3.0.3",
     "request": "^2.88.2"
   },
