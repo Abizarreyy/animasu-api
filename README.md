@@ -100,7 +100,7 @@ Output dibawah adalah Endpoints yang bisa anda gunakan saat ini
 
 ### Search
 
-`http://localhost:5000/api/v1/:keyword/:page`
+`http://localhost:5000/api/v1/search/:keyword/:page`  
 
 ```js
 const response = await fetch('http://localhost:5000/api/v1/search/dragon ball/1');
